@@ -31,7 +31,7 @@ class Action extends \Magento\Framework\App\Action\Action
      * Now, every action has an execute
      *
      **/
-     
+
     public function execute() 
     {
     	$response = array('status'=>'success');
@@ -39,3 +39,24 @@ class Action extends \Magento\Framework\App\Action\Action
         return;
     }
 }
+
+/**
+** CREATES A JSON FOR A DATAFETCH
+**/
+
+
+
+$oid = $this->getRequest()->getParam('oid');
+$orderData = ['response'=>null];
+if ($oid) {
+    $orderData['response'] = $this->_orderHelper->getOrderInfo($oid);
+} else {
+    $orderData = array('error' => 'The order does not exist or was not provided');
+}
+$this->getResponse()->representJson($this->_jsonEncoder->encode($orderData));
+return;
+
+
+/**
+*executeS THE FILE
+ */

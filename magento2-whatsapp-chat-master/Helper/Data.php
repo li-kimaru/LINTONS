@@ -1,3 +1,7 @@
+/*
+    *@author_name Kimaru<kimaruaw@gmail.com>
+ */
+
 <?php
 
 namespace Dangs\WhatsAppChat\Helper;
